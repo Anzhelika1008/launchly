@@ -73,7 +73,12 @@ export default function Home() {
             <div className="mx-auto mt-10 max-w-3xl whitespace-pre-wrap rounded-3xl border border-white/10 bg-white/5 p-8 text-left">
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-blue-400">
                 Generated Brand
-              </p>
+              </p><button
+  onClick={() => navigator.clipboard.writeText(result)}
+  className="mb-6 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-zinc-200"
+>
+  Copy result
+</button>
               <pre className="leading-8 whitespace-pre-wrap text-zinc-200 font-sans">
   {result}
 </pre>
