@@ -256,3 +256,4 @@ function Card({
       <div className="leading-7 text-zinc-200">{children}</div>
     </motion.div>
   );
+}
