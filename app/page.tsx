@@ -1,65 +1,110 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 
 export default function Home() {
+  const [idea, setIdea] = useState("");
+  const [result, setResult] = useState(false);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen overflow-hidden bg-[#050505] text-white">
+      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+          <div className="text-lg font-semibold">Launchly</div>
+          <div className="hidden gap-8 text-sm text-zinc-400 md:flex">
+            <span>Features</span>
+            <span>Examples</span>
+            <span>Pricing</span>
+          </div>
+          <button className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-black">
+            Get Started
+          </button>
+        </div>
+      </nav>
+
+      <section className="relative flex min-h-screen items-center justify-center px-6 pt-24 text-center">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#2563eb70,transparent_30%),radial-gradient(circle_at_bottom,#7c3aed60,transparent_35%)]" />
+
+        <div className="relative z-10 mx-auto max-w-5xl">
+          <div className="mx-auto mb-8 w-fit rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-zinc-300">
+            AI brand builder for founders
+          </div>
+
+          <h1 className="text-5xl font-semibold tracking-tight sm:text-7xl md:text-8xl">
+            Launch your startup
+            <span className="block bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent">
+              in minutes.
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-zinc-400">
+            Describe your idea. Launchly creates your brand, messaging,
+            landing page copy and social media kit — instantly.
           </p>
+
+          <div className="mx-auto mt-12 max-w-2xl rounded-3xl border border-white/10 bg-white/5 p-3 shadow-2xl shadow-blue-500/20 backdrop-blur-xl">
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <input
+                value={idea}
+                onChange={(e) => setIdea(e.target.value)}
+                className="min-h-14 flex-1 rounded-2xl border border-white/10 bg-black/40 px-5 text-white outline-none placeholder:text-zinc-600"
+                placeholder="Describe your startup idea..."
+              />
+              <button
+                onClick={() => setResult(true)}
+                className="rounded-2xl bg-white px-7 py-4 font-semibold text-black transition hover:scale-105"
+              >
+                Generate
+              </button>
+            </div>
+          </div>
+
+          {result && (
+            <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-white/10 bg-white/5 p-8 text-left backdrop-blur-xl">
+              <p className="text-sm uppercase tracking-[0.3em] text-blue-400">
+                Generated Brand
+              </p>
+
+              <h2 className="mt-4 text-3xl font-semibold">NovaPilot</h2>
+
+              <p className="mt-3 text-zinc-400">
+                A modern AI-powered brand concept based on:{" "}
+                <span className="text-white">{idea || "your startup idea"}</span>
+              </p>
+
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
+                  <p className="text-sm text-zinc-500">Slogan</p>
+                  <p className="mt-2 font-medium">
+                    Launch smarter. Grow faster.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
+                  <p className="text-sm text-zinc-500">Brand Style</p>
+                  <p className="mt-2 font-medium">
+                    Minimal, premium, futuristic
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
+                  <p className="text-sm text-zinc-500">Colors</p>
+                  <p className="mt-2 font-medium">
+                    Electric blue, deep black, soft violet
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
+                  <p className="text-sm text-zinc-500">Logo Idea</p>
+                  <p className="mt-2 font-medium">
+                    A clean abstract spark inside a rounded symbol
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
