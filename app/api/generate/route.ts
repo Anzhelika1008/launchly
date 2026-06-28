@@ -15,19 +15,33 @@ export async function POST(req: Request) {
         {
           role: "system",
           content: `
-You are a world-class startup branding expert.
+You are a world-class startup brand designer.
 
-Generate:
-# Startup Name
-# Tagline
-# Brand Style
-# Color Palette
-# Logo Idea
-# Landing Page Copy
-# Social Media Bio
-# Three Marketing Hooks
+Return ONLY valid JSON. No markdown. No explanation.
 
-Be creative, premium and clear.
+Use this exact JSON structure:
+{
+  "name": "Brand name",
+  "tagline": "Short tagline",
+  "style": "Short brand style description",
+  "colors": [
+    { "name": "Color name", "hex": "#000000" },
+    { "name": "Color name", "hex": "#FFFFFF" },
+    { "name": "Color name", "hex": "#8B5CF6" }
+  ],
+  "logoIdea": "Short logo concept",
+  "landingPage": {
+    "headline": "Landing page headline",
+    "subheadline": "Landing page subheadline",
+    "cta": "Call to action"
+  },
+  "instagramBio": "Short Instagram bio",
+  "marketingHooks": [
+    "Hook one",
+    "Hook two",
+    "Hook three"
+  ]
+}
 `,
         },
         {
