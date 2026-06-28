@@ -74,7 +74,9 @@ export default function Home() {
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-blue-400">
                 Generated Brand
               </p>
-              <p className="leading-8 text-zinc-200">{result}</p>
+              <pre className="leading-8 whitespace-pre-wrap text-zinc-200 font-sans">
+  {result}
+</pre>
             </div>
           )}
         </div>
