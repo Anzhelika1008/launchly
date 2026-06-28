@@ -237,10 +237,16 @@ function Card({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="rounded-[1.5rem] border border-white/10 bg-white/[0.07] p-6 shadow-xl shadow-black/30 backdrop-blur-xl"
-    >
+  initial={{ opacity: 0, y: 30, scale: 0.96 }}
+  animate={{ opacity: 1, y: 0, scale: 1 }}
+  whileHover={{
+    y: -8,
+    scale: 1.03,
+    transition: { duration: 0.2 }
+  }}
+  transition={{ duration: 0.45 }}
+  className="rounded-[1.5rem] border border-white/10 bg-white/[0.07] p-6 shadow-xl shadow-black/30 backdrop-blur-xl"
+>
       <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-black">
         {icon}
       </div>
@@ -250,4 +256,3 @@ function Card({
       <div className="leading-7 text-zinc-200">{children}</div>
     </motion.div>
   );
-}
